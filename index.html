@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- CSS only -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+   
+<title>Random Quote Generator</title>
+   <script>
+    const QUOTEBANK = [
+    {
+        quote: "It is impossible to live without failing at something, unless you live so cautiously that you might as well not have lived at all - in which case, you fail by default.",
+        author: "J.K.Rowling"
+    },
+    {
+        quote: "If you can't feed a hundred people, then feed just one.",
+        author: "Mother Teresa"
+    },
+    {
+        quote: "Success isn't about how much money you make. It's about the difference you make in people's lives.",
+        author: "Michelle Obama"
+    },
+    {
+        quote: "Love all, trust a few.",
+        author: "William Shakespeare"
+    },
+    {
+        quote: "Every moment wasted looking back keeps us from moving forward.",
+        author: "Hillary Clinton"
+    },
+    {
+        quote: "Remember, no one can make you feel inferior without your consent.",
+        author: "Eleanor Roosevelt"
+    },
+    {
+        quote: "Live as if you were to die tomorrow. Learn as if you were to live forever.",
+        author: "Mahatma Gandhi"
+    },
+    {
+        quote: "The mind grows by what it feeds on.",
+        author: "J.G.Holland"
+    },
+    {
+        quote: "Life is what happens when you're busy making other plans.",
+        author: "John Lennon"
+    },
+    {
+        quote: "Don't judge each day by the harvest you reap but by the seeds that you plant.",
+        author: "Robert Louis Stevenson"
+    },
+    {
+        quote: "Always remember that you are absolutely unique. Just like everyone else.",
+        author: "Margaret Mead"
+    },
+    {
+        quote: "It is during our darkest moments that we must focus to see the light.",
+        author: "Aristotle"
+    },
+    {
+        quote: "Do not go where the path may lead, go instead where there is no path and leave a trail.",
+        author: "Ralph Waldo Emerson"
+    },
+    {
+        quote: "Listen, You'll forget; Learn you'll remember; Practice and you'll learn.",
+        author: "AJ Bosco"
+    },
+    {
+        quote: "In the end, it's not the years in your life that count. It's the life in your years.",
+        author: "Abraham Lincoln"
+    },
+    {
+        quote: "Life is either a daring adventure or nothing at all.",
+        author: "Hellen Keller"
+    },
+    {
+        quote: "Only a life lived for others is a life worthwhile.",
+        author: "Albert Einstein"
+    },
+    {
+        quote: "Everything in life is give to receive. Nothing comes free.",
+        author: "AJ Bosco"
+    },
+    {
+        quote: "Life is really simple, but we insist on making it complicated.",
+        author: "Confucius"
+    },
+    {
+        quote: "Do not let making a living prevent you from making a life.",
+        author: "John Wooden"
+    },
+    {
+        quote: "The secret of success is to do the common thing uncommonly well.",
+        author: "John D. Rockefeller Jr"
+    },
+    {
+        quote: "The harder you work, the more luck you seem to have.",
+        author: "Thomas Jefferson"
+    },
+    {
+        quote: "The real test is not whether you avoid this failure, because you won't. It's whether you let it harden or shame you into inaction, or whether you learn from it; whether you choose to persevere.",
+        author: "Barack Obama"
+    },
+    {
+        quote: "Don't be distracted by criticism. Remember — the only taste of success some people get is to take a bite out of you.",
+        author: "Zig Ziglar"
+    },
+    {
+        quote: "Success usually comes to those who are too busy to be looking for it.",
+        author: "Henry David Thoreau"
+    },
+    {
+        quote: "You have no friends; People will only walk with you because they are gaining something from you.",
+        author: "AJ Bosco"
+    },
+    {
+        quote: "The only limit to our realization of tomorrow will be our doubts of today.",
+        author: "Franklin D. Roosevelt"
+    },
+    {
+        quote: "I failed my way to success.",
+        author: "Thomas Edison"
+    },
+    {
+        quote: "If you set your goals ridiculously high and it's a failure, you will fail above everyone else's success.",
+        author: "James Cameron"
+    },
+    {
+        quote: "If you really look closely, most overnight successes took a long time.",
+        author: "Steve Jobs"
+    },
+    {
+        quote: "A successful man is one who can lay a firm foundation with the bricks others have thrown at him.",
+        author: "David Brinkley"
+    },
+    {
+        quote: "Try not to become a man of success.Rather become a man of value.",
+        author: "Albert Einstein"
+    },
+    {
+        quote: "You know you are on the road to success if you would do your job and not be paid for it.",
+        author: "Oprah Winfrey"
+    },
+    {
+        quote: "Overtaking Is Allowed In Life. Never Look Down On Anyone.",
+        author: "AJ Bosco"
+    },
+    {
+        quote: "The only place where success comes before work is in the dictionary.",
+        author: "Vidal Sassoon"
+    },
+    {
+        quote: "If you are not willing to risk the usual, you will have to settle for the ordinary.",
+        author: "Jim Rohn"
+    },
+    {
+        quote: "People who succeed have momentum. The more they succeed, the more they want to succeed and the more they find a way to succeed. Similarly, when someone is failing, the tendency is to get on a downward spiral that can even become a self-fulfilling prophecy.",
+        author: "Tony Robbins"
+    },
+    {
+        quote: "I've learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel.",
+        author: "Maya Angelou"
+    },
+    {
+        quote: "My life is my message.",
+        author: "Bapu Bhai Mahatma Gandhi"
+    },
+    {
+        quote: "Hate the sin, Love the sinner.",
+        author: "Mohandas Karamchand Gandhi"
+    },
+    {
+        quote: "Seek not greater wealth, but simpler pleasure; not higher fortune, but deeper felicity.",
+        author: "Mahatma Gandhi"
+    },
+    {
+        quote: "In doing something, do it with love or never do it at all.",
+        author: "Mahatma Gandhi"
+    },
+    {
+        quote: "There is a sufficiency in the world for man's need but not for man's greed.",
+        author: "Mohandas Karamchand Gandhi"
+    },
+    {
+        quote: "The real ornament of woman is her character, her purity.",
+        author: "Mahatma Gandhi"
+    },
+    {
+        quote: "A man is but the product of his thoughts. What he thinks, he becomes.",
+        author: "Mohandas Karamchand Gandhi"
+    }
+
+    
+    ]
+window.onload = init;
+function init() {
+generateQuote()
+}
+
+function generateQuote() {
+let quoteSize = QUOTEBANK.length;
+let randomIndex = Math.floor(Math.random() * quoteSize);
+let randomQuoteData = QUOTEBANK[randomIndex];
+
+
+let twitterLink = "https://twitter.com/intent/tweet?hashtags=quotes&amp;related=freecodecamp&amp;text="
+
+let quoteInApiFormat = randomQuoteData.quote.replace(/ /g, "%20");
+
+twitterLink += quoteInApiFormat
+
+let authorInApiFormat = randomQuoteData.author.replace(/ /g, "%20");
+twitterLink += " -" + authorInApiFormat
+
+    document.getElementById("tweet-quote").href = twitterLink;
+    document.getElementById("text").innerText = randomQuoteData.quote;
+    document.getElementById("author").innerText = randomQuoteData.author; 
+
+}
+   </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row py-5">
+            <div class="col-md-8 offset-md-2">
+ <wrapper id="quote-box">
+    <div class="card">
+       <div class="card-header text-center">
+        Random Quote Machine
+       </div>
+        <div class="card-body">
+          <h5 class="card-title"><div id="text"></div></h5>
+          <p class="card-text">
+            <div id="author"></div>
+          </p>
+          <button id="new-quote" onClick="generateQuote()" class="btn btn-block btn-success">New Quote</button>
+        <a href="#" id="tweet-quote" target="_blank" class="btn btn block btn-primary">Tweet Quote</a>
+        </div>
+    </div>
+
+</wrapper>
+</div>
+</div>
+</div> 
+ <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>  
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+<script src= "https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+</html>
